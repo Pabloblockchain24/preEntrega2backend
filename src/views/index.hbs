@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>PRODUCTOS</h1>
+
+    <form method="get" action="/products">
+    <label for="limit">Cantidad de productos a mostrar</label>
+    <input type="number" name="limit">
+    <button type="submit">Limitar busqueda</button>
+    </form>
+
+
+    <form method="get" action="/products">
+    <label for="page">PAGINA A BUSCAR</label>
+    <input type="number" name="page">
+    <button type="submit"> FILTRAR PAGINA</button>
+    </form>
+
+
+    <form method="get" action="/products">
+    <button type="submit" name="sortDirection" value="asc"> DE MENOR A MAYOR</button>
+    <button type="submit" name="sortDirection" value="des"> DE MAYOR A MENOR</button>
+    </form>
+
+
+    {{!-- <button id="ordenarAsc">Ordenar Productos de menor a mayor</button>
+    <button id="ordenarDes">Ordenar Productos de mayor a menor</button> --}}
+
+
+
+    {{#each productos}}
+    <div>
+        <p>Nombre:{{this.nombre}} </p>
+        <p>Descripcion: {{this.descripcion}}</p> 
+        <p>Categoria: {{this.categoria}}</p>
+        <p>Precio: {{this.precio}}</p>
+        <hr>
+    </div>
+    {{/each}}
+
+
+    <hr>
+
+        {{!-- <h1>CARRITOS</h1>
+
+    {{#each carts}}
+    <div>
+        <p>{{this.productos}}</p>
+        <hr>
+    </div>
+    {{/each}} --}}
+
+</body>
+</html>
