@@ -39,7 +39,6 @@ router.post("/", async(req,res)=>{
     }catch(error){
         console.log(error)
     }
-
 })
 
 // router.put("/:pid", async(req,res)=>{
@@ -52,10 +51,10 @@ router.post("/", async(req,res)=>{
 //     res.send({result: "success", payload: result })
 // })
 
-// router.delete("/:pid", async(req,res)=>{
-//     let {pid} = req.params
-//     let result = await productModel.deleteOne({_id: pid})
-//     res.send({result: "success", payload: result})
-// })
+router.delete("/:pid", async(req,res)=>{
+    let {pid} = req.params
+    let result = await productModel.deleteOne({_id: pid})
+    res.send({result: "success", payload: result})
+})
 
 module.exports = router

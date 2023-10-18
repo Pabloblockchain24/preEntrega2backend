@@ -6,7 +6,7 @@ const handlebars = require('express-handlebars');
 const viewsRouter = require("./routes/view.js")
 const productRouter = require("./routes/products.router.js")
 const cartRouter = require("./routes/carts.router.js")
-
+const cartView = require("./routes/cartView.js")
 
 
 const app = express()
@@ -37,3 +37,4 @@ mongoose.connect("mongodb+srv://parcepaivaTest:clusterMongo@clustercoderhouse.un
 app.use("/products", viewsRouter)
 app.use("/api/products", productRouter)
 app.use("/api/carts", cartRouter)
+app.use("/carts", cartView)
