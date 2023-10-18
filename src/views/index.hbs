@@ -9,18 +9,23 @@
     <h1>PRODUCTOS</h1>
 
     <form method="get" action="/products">
-    <label for="limit">Cantidad de productos a mostrar</label>
-    <input type="number" name="limit">
-    <button type="submit">Limitar busqueda</button>
+    <label for="category">FILTRO CATEGORIA</label>
+    <input type="text" name="category">
+    <button type="submit">ENVIAR</button>
     </form>
 
 
     <form method="get" action="/products">
-    <label for="page">PAGINA A BUSCAR</label>
+    <label for="page">FILTRO PAGINA</label>
     <input type="number" name="page">
-    <button type="submit"> FILTRAR PAGINA</button>
+    <button type="submit"> ENVIAR</button>
     </form>
 
+    <form method="get" action="/products">
+    <label for="availability">FILTRO DISPONIBILIDAD</label>
+    <input type="text" name="availability">
+    <button type="submit"> ENVIAR</button>
+    </form>
 
     <form method="get" action="/products">
     <button type="submit" name="sortDirection" value="asc"> DE MENOR A MAYOR</button>

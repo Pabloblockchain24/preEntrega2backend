@@ -8,13 +8,14 @@ router.get("/:cid", async(req,res)=>{
     let cid = req.params.cid
     try{
 
-        const carrito = await cartModel.findById(cid).populate('productos.productId').lean();
-
-    if(!carrito){
+        const carrito = await cartModel.findById(cid).populate('productos.product')
+        if(!carrito){
         return res.send({message: "carrito no encontrado"})
     }
 
     let aux=carrito.productos
+
+    console.log(aux)
     res.render("carts.hbs", {
         aux
     })

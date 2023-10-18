@@ -8,9 +8,9 @@ const mongoosePaginate = require("mongoose-paginate-v2");
 const cartSchema = new mongoose.Schema({
     productos: [
         {
-            productId: {
+            product: {
                 type: mongoose.Schema.Types.ObjectId,
-                ref: "productos"
+                ref: 'productos'
             },
             cantidad: Number,
         },

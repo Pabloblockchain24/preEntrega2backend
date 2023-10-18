@@ -3,10 +3,10 @@ const { default: mongoose } = require("mongoose")
 const path = require('path');
 const handlebars = require('express-handlebars');
 
-const viewsRouter = require("./routes/view.js")
+const productView = require("./routes/productView.router.js")
 const productRouter = require("./routes/products.router.js")
 const cartRouter = require("./routes/carts.router.js")
-const cartView = require("./routes/cartView.js")
+const cartView = require("./routes/cartView.router.js")
 
 
 const app = express()
@@ -14,7 +14,8 @@ const port = 8080;
 
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
-app.engine("handlebars", handlebars.engine())
+
+app.engine("handlebars", handlebars.engine)
 app.set("views", __dirname + "/views")
 app.set("view engine", "handlebars")
 app.use(express.static(__dirname, + "/views"))
@@ -34,7 +35,7 @@ mongoose.connect("mongodb+srv://parcepaivaTest:clusterMongo@clustercoderhouse.un
     })
 
 
-app.use("/products", viewsRouter)
+app.use("/products", productView)
+app.use("/carts", cartView)
 app.use("/api/products", productRouter)
 app.use("/api/carts", cartRouter)
-app.use("/carts", cartView)

@@ -2,8 +2,8 @@ const {Router} = require("express")
 const router = Router()
 const { default: mongoose } = require("mongoose")
 
-const {productModel} = require("../models/product.model.js")
-
+const productModel = require("../models/product.model.js")
+const paginate = require("mongoose-paginate-v2")
 
 // router.get("/", async(req,res) => {
 //     await mongoose.connect("mongodb+srv://parcepaivaTest:clusterMongo@clustercoderhouse.unxc6mu.mongodb.net/?retryWrites=true&w=majority")

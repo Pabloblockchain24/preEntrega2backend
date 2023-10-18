@@ -6,8 +6,9 @@ const productCollection = "productos"
 const productSchema = mongoose.Schema({
     nombre: String,
     descripcion: String,
-    categoria: String,
-    precio: Number
+    category: String,
+    precio: Number,
+    availability: String
 })
 
 productSchema.plugin(mongoosePaginate)
