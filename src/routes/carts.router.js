@@ -3,21 +3,17 @@ const router = Router()
 const  cartModel  = require("../models/cart.model.js");
 const  productModel  = require("../models/product.model.js");
 
+// obtengo todos los carritos en endpoint "/api/carts"
+router.get("/", async(req,res) => {
+    try{
+        const carritos = await cartModel.find({})
+        res.send({status: "success", payload: carritos})
+    }catch(error){
+        console.log(error)
+    }
+})
 
-// router.get("/", async(req,res) => {
-//     await mongoose.connect("mongodb+srv://parcepaivaTest:clusterMongo@clustercoderhouse.unxc6mu.mongodb.net/?retryWrites=true&w=majority")
-//     let productos = await productModel.aggregate()
-//     try{
-//         res.send({status: "success", payload: productos})
-//     }catch(error){
-//         console.log(error)
-//     }
-// })
-
-
-
-// ruta para postear nuevos carritos 
-
+// Creo nuevos carritos vacios en "/api/carts"
 router.post("/", async(req,res)=>{
     try{
         let result = await cartModel.create({})
@@ -28,6 +24,7 @@ router.post("/", async(req,res)=>{
 
 })
 
+// Posteo nuevos productos al carrito en en "/api/carts/:cid/products/:pid"
 router.post("/:cid/products/:pid", async(req,res) =>{
     let {cid, pid} = req.params
     try{
@@ -40,9 +37,7 @@ router.post("/:cid/products/:pid", async(req,res) =>{
         if(!producto){
             return res.send({message: "producto no encontrado"})
         }
-
         const probando = {_id:pid, cantidad:1}
-
         carrito.productos.push(probando)
         let result = await carrito.save();
         res.send({result: "success", payload: result })
@@ -50,9 +45,9 @@ router.post("/:cid/products/:pid", async(req,res) =>{
     }catch(error){
         console.log(error)
     }
-
 })
 
+//edito carrito pasado por params en endpoint "/api/carts/:cid"
 router.put("/:cid", async(req,res)=>{
     let cid = req.params.cid
     try{
@@ -76,7 +71,7 @@ router.put("/:cid", async(req,res)=>{
 }
 })
 
-
+//edito productos del carrito pasado por params en endpoint "/api/carts/:cid/products/:pid"
 router.put("/:cid/products/:pid", async(req,res)=>{
     let cid = req.params.cid
     let pid = req.params.pid
@@ -98,6 +93,7 @@ router.put("/:cid/products/:pid", async(req,res)=>{
 }
 })
 
+//elimino productos del carrito pasado por params en endpoint "/api/carts/:cid/products/:pid"
 router.delete("/:cid/products/:pid", async(req,res)=>{
     let {cid, pid} = req.params
     try{
@@ -117,6 +113,7 @@ router.delete("/:cid/products/:pid", async(req,res)=>{
 }
 })
 
+//vacio carrito pasado por params en endpoint "api/carts/:cid"
 router.delete("/:cid", async(req,res)=>{
     let cid = req.params.cid
     try{

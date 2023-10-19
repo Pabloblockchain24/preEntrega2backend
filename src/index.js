@@ -35,6 +35,10 @@ mongoose.connect("mongodb+srv://parcepaivaTest:clusterMongo@clustercoderhouse.un
     })
 
 
+
+
+
+
 app.use("/products", productView)
 app.use("/carts", cartView)
 app.use("/api/products", productRouter)

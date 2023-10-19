@@ -9,13 +9,9 @@
 
     CARRITO 
 
-    {{#each aux}}
+    {{#each carrito.productos}}
     <div>
         <p>ID PRODUCTO: {{this._id}}</p>
-        <p>NOMBRE: {{this.productId.nombre}}</p>
-        <p>DESCRIPCIÓN: {{this.productId.descripcion}}</p>
-        <p>CATEGORÍA: {{this.product.categoria}}</p>
-        <p>PRECIO: {{this.precio}}</p>
         <p>CANTIDAD: {{this.cantidad}}</p>
         <hr>
     </div>
