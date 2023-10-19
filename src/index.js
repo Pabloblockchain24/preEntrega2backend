@@ -33,12 +33,7 @@ mongoose.connect("mongodb+srv://parcepaivaTest:clusterMongo@clustercoderhouse.un
     .catch(error => {
         console.error("Error al conectarse a la base de datos", error);
     })
-
-
-
-
-
-
+    
 app.use("/products", productView)
 app.use("/carts", cartView)
 app.use("/api/products", productRouter)

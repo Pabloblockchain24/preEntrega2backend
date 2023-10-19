@@ -101,7 +101,7 @@ router.delete("/:cid/products/:pid", async(req,res)=>{
     if(!carrito){
         return res.send({message: "carrito no encontrado"})
     }
-    const producto = carrito.productos.findIndex(producto => producto._id === pid)
+    const producto = carrito.productos.findIndex(producto => producto._id.toString() === pid)
     if(producto === -1){
         return res.send({message: "producto no encontrado"})
     }
